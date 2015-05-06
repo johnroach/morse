@@ -1,5 +1,5 @@
 import pygame
-
+import sys
 '''
 @TODO: The better way to handle this will be by lower casing all
 characters that are between [az] right? :)
@@ -102,9 +102,9 @@ pygame.init()
 pygame.mixer.init(FREQ, BITSIZE, CHANNELS, BUFFER)
 
 
-def main():
-    convert_string = 'SOS'
-    # print(string_to_code(convert_string))
+def main(argv):
+    convert_string = argv[0]
+    print(string_to_code(convert_string))
 
     play_morse_sound(code_to_sound_code(string_to_code(convert_string)))
     print(string_to_code(convert_string).replace('|', '  '))
@@ -154,4 +154,4 @@ def string_to_code(convert_string):
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])
