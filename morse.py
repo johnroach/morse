@@ -1,10 +1,5 @@
 import pygame
 import sys
-'''
-@TODO: The better way to handle this will be by lower casing all
-characters that are between [az] right? :)
-that will lessen this huge library...
-'''
 
 # global constants
 FREQ = 44100   # same as audio CD
@@ -14,80 +9,30 @@ BUFFER = 1024  # audio buffer size in no. of samples
 FRAMERATE = 60 # how often to check if playback has finished
 
 morsetab = {
-    'A': '.- ',
-    'a': '.- ',
-    'B': '-... ',
-    'b': '-... ',
-    'C': '-.-. ',
-    'c': '-.-. ',
-    'D': '-.. ',
-    'd': '-.. ',
-    'E': '. ',
-    'e': '. ',
-    'F': '..-. ',
-    'f': '..-. ',
-    'G': '--. ',
-    'g': '--. ',
-    'H': '.... ',
-    'h': '.... ',
-    'I': '.. ',
-    'i': '.. ',
-    'J': '.--- ',
-    'j': '.--- ',
-    'K': '-.- ',
-    'k': '-.- ',
-    'L': '.-.. ',
-    'l': '.-.. ',
-    'M': '-- ',
-    'm': '-- ',
-    'N': '-. ',
-    'n': '-. ',
-    'O': '--- ',
-    'o': '--- ',
-    'P': '.--. ',
-    'p': '.--. ',
-    'Q': '--.- ',
-    'q': '--.- ',
-    'R': '.-. ',
-    'r': '.-. ',
-    'S': '... ',
-    's': '... ',
-    'T': '- ',
-    't': '- ',
-    'U': '..- ',
-    'u': '..- ',
-    'V': '...- ',
-    'v': '...- ',
-    'W': '.-- ',
-    'w': '.-- ',
-    'X': '-..- ',
-    'x': '-..- ',
-    'Y': '-.-- ',
-    'y': '-.-- ',
-    'Z': '--.. ',
-    'z': '--.. ',
-    '0': '----- ',
-     ',': '--..-- ',
-    '1': '.---- ',
-    '.': '.-.-.- ',
-    '2': '..--- ',
-    '?': '..--.. ',
-    '3': '...-- ',
-    ';': '-.-.-. ',
-    '4': '....- ',
-    ':': '---... ',
-    '5': '..... ',
-    "'": '.----. ',
-    '6': '-.... ',
-    '-': '-....- ',
-    '7': '--... ',
-    '/': '-..-. ',
-    '8': '---.. ',
-    '(': '-.--.- ',
-    '9': '----. ',
-    ')': '-.--.- ',
-    ' ': '|',
-    '_': '..--.- ',
+    'a': '.- ',     'b': '-... ',
+    'c': '-.-. ',   'd': '-.. ',
+    'e': '. ',      'f': '..-. ',
+    'g': '--. ',    'h': '.... ',
+    'i': '.. ',     'j': '.--- ',
+    'k': '-.- ',    'l': '.-.. ',
+    'm': '-- ',     'n': '-. ',
+    'o': '--- ',    'p': '.--. ',
+    'q': '--.- ',   'r': '.-. ',
+    's': '... ',    't': '- ',
+    'u': '..- ',    'v': '...- ',
+    'w': '.-- ',    'x': '-..- ',
+    'y': '-.-- ',   'z': '--.. ',
+    '0': '----- ',  ',': '--..-- ',
+    '1': '.---- ',  '.': '.-.-.- ',
+    '2': '..--- ',  '?': '..--.. ',
+    '3': '...-- ',  ';': '-.-.-. ',
+    '4': '....- ',  ':': '---... ',
+    '5': '..... ',  "'": '.----. ',
+    '6': '-.... ',  '-': '-....- ',
+    '7': '--... ',  '/': '-..-. ',
+    '8': '---.. ',  '(': '-.--.- ',
+    '9': '----. ',  ')': '-.--.- ',
+    ' ': '|',       '_': '..--.- ',
 }
 
 morse_sound = {
@@ -103,8 +48,7 @@ pygame.mixer.init(FREQ, BITSIZE, CHANNELS, BUFFER)
 
 
 def main(argv):
-    convert_string = argv[0]
-    print(string_to_code(convert_string))
+    convert_string = argv[0].lower()
 
     play_morse_sound(code_to_sound_code(string_to_code(convert_string)))
     print(string_to_code(convert_string).replace('|', '  '))
@@ -112,7 +56,6 @@ def main(argv):
 
 def playsound(soundfile):
     """Play sound through default mixer channel in blocking manner.
-
     This will load the whole sound into memory before playback
     """
     sound = pygame.mixer.Sound(soundfile)
