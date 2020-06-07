@@ -97,4 +97,4 @@ def string_to_code(convert_string):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main(sys.argv[0:])
